@@ -10,7 +10,8 @@ Summary
 
 This is the Android software used for the mini pinball cabinet.
 
-![Pinball cabinet](http://cdn.instructables.com/FQB/AM1A/HFSHUX0K/FQBAM1AHFSHUX0K.MEDIUM.jgp "Pinball cabinet")
+
+![Pinball cabinet](http://cdn.instructables.com/FQB/AM1A/HFSHUX0K/FQBAM1AHFSHUX0K.MEDIUM.jpg "Pinball cabinet")
 
 It essentially does this:
  * Listens to keyboard events, and forward them as touchscreen events. This part is written in C, and expects the device to be rooted.
