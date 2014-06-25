@@ -5,7 +5,21 @@ ANDROID APP FOR THE MINI PINBALL PROJECT
 Released under the GNU General Public License (GPL) version 3.
 No warranties of any kind are given.
 
-* See http://www.instructables.com/id/Mini-Pinball for project
+Summary
+-------
+
+This is the Android software used for the mini pinball cabinet.
+
+![Pinball cabinet](http://cdn.instructables.com/FQB/AM1A/HFSHUX0K/FQBAM1AHFSHUX0K.MEDIUM.jgp "Pinball cabinet")
+
+It essentially does this:
+ * Listens to keyboard events, and forward them as touchscreen events. This part is written in C, and expects the device to be rooted.
+ * Provides an app caring for the configuration (selection of device drivers). This part is written in Java.
+
+Documentation
+-------------
+
+* See http://www.instructables.com/id/Mini-Pinball-1 for project
   description
 
 * UML class diagram: see architecture_classes.graphml (open with yEd).
