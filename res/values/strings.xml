@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pinball Buttons</string>
+    <string name="notification_hint">Click for setup</string>
+    <string name="pref_kb_device">Keyboard Device</string>
+    <string name="pref_ts_device">Touch Screen Device</string>
+    <string name="pref_device_rotation">Device Rotation</string>
+    <string name="pref_device_rotation_now">Now %d</string>
+    <string name="button_ok">OK</string>
+    <string name="button_close">Close</string>
+    <string name="about_dialog_title">About</string>
+    <string name="about_dialog_text"><b>Pinball applications are more playable
+        with real buttons!</b>
+        
+        \n\n<big><b>This application allows to use an USB keyboard as pinball
+        buttons.</b></big>
+        
+        \n\nThe motivation of this software is the construction of a mini
+        pinball cabinet, comprising a tablet, an USB keybord controller,
+        arcade buttons, and a wooden enclosure. See
+        <a href="http://www.instructables.com/id/Mini-Pinball-1/">
+        http://www.instructables.com/id/Mini-Pinball-1/
+        </a>.
+        
+        \n\nIt listens to keyboard events, and generates touchscreen
+        taps on the bottom screen corners. This way, <u>any Android pinball
+        application</u> can be controlled.
+        
+        \n\nYour tablet needs to have an <u>USB host</u> (aka on-the-go) port, to
+        which the keyboard shall be connected. Only left and right buttons are
+        supported. No plunger is yet supported.
+                
+        \n\nFor more information about setup, cabinet construction and source code,
+        please visit: <a href="http://ten.homelinux.net/pb/pinball/"
+        >http://ten.homelinux.net/pb/pinball/</a>.
+        </string>
+    <string name="version_fmt" formatted="false">%s - Version %s</string>
+    <string name="menu_about">About</string>
+    <string name="menu_logs">Show Logs</string>
+    <string name="menu_restart_service">Restart Service</string>
+    <string name="logs_view_title">Pinball Buttons - Logs</string>
+    
+</resources>
