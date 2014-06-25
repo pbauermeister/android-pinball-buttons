@@ -1,5 +1,5 @@
-ANDROID APP FOR THE MINI PINBALL PROJECT
-========================================
+Android app for the mini pinball cabinet project
+================================================
 
 (C) 2013 by Pascal Bauermeister.
 Released under the GNU General Public License (GPL) version 3.
