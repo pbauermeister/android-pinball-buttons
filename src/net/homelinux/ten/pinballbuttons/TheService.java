@@ -39,7 +39,7 @@ public class TheService extends Service {
 		return START_STICKY;
 	}
 
-	private static final String TAG = "TheService";
+	// private static final String TAG = "TheService";
 	private static int NOTIFICATION_ID = 1;
 	private Context context;
 
