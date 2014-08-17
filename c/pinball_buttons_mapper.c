@@ -308,12 +308,16 @@ int load_config(const char* config_file, Params *p)
       p->kb_device = strdup(value);
     else if (!strcmp("ts_device", key))
       p->ts_device = strdup(value);
-    if (!strcmp("screen_height", key))
+    else if (!strcmp("screen_height", key))
       p->screen_height = atoi(value);
-    if (!strcmp("screen_width", key))
+    else if (!strcmp("screen_width", key))
       p->screen_width = atoi(value);
-    if (!strcmp("ts_type", key))
+    else if (!strcmp("ts_type", key))
       p->ts_type = value[0];
+    else if (!strcmp("margin_h", key))
+      p->margin_h = atoi(value);
+    else if (!strcmp("margin_v", key))
+      p->margin_v = atoi(value);
   }
   fclose(f);
 

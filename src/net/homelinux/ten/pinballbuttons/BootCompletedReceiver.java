@@ -13,6 +13,6 @@ import android.content.Intent;
 public class BootCompletedReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		TheService.startService(context);
+		TheService.restartOrKillService(context);
 	}
 }

@@ -5,7 +5,9 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 
 /**
  * This Service is here to provide an permanent item in the notification area,
@@ -21,9 +23,16 @@ public class TheService extends Service {
 	 * 
 	 * @param context
 	 */
-	public static void startService(Context context) {
-		Intent service = new Intent(context, TheService.class);
-		context.startService(service);
+	public static synchronized void restartOrKillService(Context context) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		if (prefs.getBoolean(SettingsFragment.KEY_ENABLED, true)) {
+			Intent serviceIntent = new Intent(context, TheService.class);
+			context.startService(serviceIntent);
+		} else {
+			Intent serviceIntent = new Intent(context, TheService.class);
+			context.stopService(serviceIntent);
+		}
 	}
 
 	@Override
@@ -56,7 +65,7 @@ public class TheService extends Service {
 		// notification
 		Notification notification = new Notification.Builder(this)
 				.setContentIntent(pi).setContentTitle(title)
-				.setContentText(hint).setSmallIcon(R.drawable.ic_launcher)
+				.setContentText(hint).setSmallIcon(R.drawable.ic_notification)
 				.getNotification();
 		notification.flags |= Notification.FLAG_NO_CLEAR;
 

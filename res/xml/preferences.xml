@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <ListPreference
-        android:dialogTitle="@string/pref_kb_device"
-        android:key="kb_device"
-        android:title="@string/pref_kb_device" />
-    <ListPreference
-        android:dialogTitle="@string/pref_ts_device"
-        android:key="ts_device"
-        android:title="@string/pref_ts_device" />
-    <ListPreference
-        android:entries="@array/pref_device_rotation_entries"
-        android:entryValues="@array/pref_device_rotation_values"
-        android:key="device_rotation"
-        android:title="@string/pref_device_rotation" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="enabled"
+        android:summary="@string/pref_enabled" />
+
+    <PreferenceCategory android:title="@string/pref_device" >
+        <ListPreference
+            android:dialogTitle="@string/pref_device_kb"
+            android:key="kb_device"
+            android:title="@string/pref_device_kb" />
+        <ListPreference
+            android:dialogTitle="@string/pref_device_ts"
+            android:key="ts_device"
+            android:title="@string/pref_device_ts" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_screen" >
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/pref_device_rotation_entries"
+            android:entryValues="@array/pref_device_rotation_values"
+            android:key="device_rotation"
+            android:title="@string/pref_screen_rotation" />
+
+        <EditTextPreference
+            android:defaultValue="80"
+            android:inputType="number"
+            android:key="margin_h"
+            android:title="@string/pref_screen_margin_h" />
+        <EditTextPreference
+            android:defaultValue="50"
+            android:inputType="number"
+            android:key="margin_v"
+            android:title="@string/pref_screen_margin_v" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

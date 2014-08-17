@@ -63,7 +63,7 @@ public class SettingsActivity extends Activity {
 			showLogs();
 			return true;
 		case R.id.menu_restart_service:
-			TheService.startService(context);
+			TheService.restartOrKillService(context);
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -90,12 +90,12 @@ public class SettingsActivity extends Activity {
 						onSharedPreferenceChangeListener);
 
 		Logs.d(TAG, "Version: " + getSoftwareVersion());
-		TheService.startService(context);
+		TheService.restartOrKillService(context);
 	}
 
 	@Override
 	protected void onResume() {
-		//TheService.startService(context);
+		// TheService.startService(context);
 		super.onResume();
 	}
 
@@ -106,6 +106,7 @@ public class SettingsActivity extends Activity {
 	 * Apply changes: rewrite compact settings file, and restart service.
 	 */
 	private void savePrefsToCompactFile() {
+		String s;
 		HashMap<String, String> extraMap = new HashMap<String, String>();
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
@@ -122,9 +123,9 @@ public class SettingsActivity extends Activity {
 		extraMap.put("screen_height", String.format("%d", screenSize.y));
 
 		// add ts type to extra info
-		String ts = prefs.getString(SettingsFragment.KEY_TS_DEVICE, null);
-		if (ts != null) {
-			DeviceItem item = DeviceItem.unpack(ts);
+		s = prefs.getString(SettingsFragment.KEY_TS_DEVICE, null);
+		if (s != null) {
+			DeviceItem item = DeviceItem.unpack(s);
 			extraMap.put("ts_type", item.tsType);
 		}
 

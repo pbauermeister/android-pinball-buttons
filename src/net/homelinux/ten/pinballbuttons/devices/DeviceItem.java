@@ -60,7 +60,7 @@ public class DeviceItem {
 				: null;
 	}
 
-//	private static final String TAG = "DeviceItem";
+	// private static final String TAG = "DeviceItem";
 
 	private String clean(String s) {
 		return s == null || s.equals("-") ? "" : s.replace("|", " ").trim();

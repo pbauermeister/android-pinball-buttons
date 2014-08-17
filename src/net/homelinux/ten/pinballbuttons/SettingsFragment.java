@@ -7,7 +7,9 @@ import net.homelinux.ten.pinballbuttons.devices.DeviceItem;
 import net.homelinux.ten.pinballbuttons.devices.DeviceList;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -31,18 +33,39 @@ public class SettingsFragment extends PreferenceFragment {
 	public static final String KEY_KB_DEVICE = "kb_device";
 	public static final String KEY_DEVICE_ROTATION = "device_rotation";
 
+	public static final String KEY_MARGIN_H = "margin_h";
+	public static final String KEY_MARGIN_V = "margin_v";
+
+	public static final String KEY_ENABLED = "enabled";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		context = this.getActivity().getApplicationContext();
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		prefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener() {
+			@Override
+			public void onSharedPreferenceChanged(
+					SharedPreferences sharedPreferences, String key) {
+				TheService.restartOrKillService(context);
+			}
+		});
 
 		addPreferencesFromResource(R.xml.preferences);
 
 		initDevicePreference(KEY_TS_DEVICE);
 		initDevicePreference(KEY_KB_DEVICE);
 		initRotationPreference();
+
+		EditTextPreference etp;
+		etp = (EditTextPreference) findPreference(KEY_MARGIN_H);
+		etp.setOnPreferenceChangeListener(onPreferenceChangeListener);
+		etp.setSummary(prefs.getString(KEY_MARGIN_H, null));
+
+		etp = (EditTextPreference) findPreference(KEY_MARGIN_V);
+		etp.setOnPreferenceChangeListener(onPreferenceChangeListener);
+		etp.setSummary(prefs.getString(KEY_MARGIN_V, null));
 	}
 
 	private SharedPreferences prefs;
@@ -54,10 +77,10 @@ public class SettingsFragment extends PreferenceFragment {
 	private void initRotationPreference() {
 		ListPreference lp = (ListPreference) findPreference(KEY_DEVICE_ROTATION);
 		String dialogTitle = getResources().getString(
-				R.string.pref_device_rotation);
+				R.string.pref_screen_rotation);
 		dialogTitle += " - ";
 		dialogTitle += String.format(
-				getResources().getString(R.string.pref_device_rotation_now),
+				getResources().getString(R.string.pref_screen_rotation_now),
 				getScreenRotation());
 		lp.setDialogTitle(dialogTitle);
 		lp.setOnPreferenceChangeListener(onPreferenceChangeListener);

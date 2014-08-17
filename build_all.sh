@@ -21,18 +21,14 @@ android update project --path . --target android-15
 mkdir -p assets/config
 echo "Revision=$(svnversion)" > assets/config/Version.config
 
-# Make src archive
-ant clean
+# Determine SCM version
+#rev=`svnversion`
+rev=`git log --pretty=format:'%ad-%h' --abbrev-commit --date=short -1`
 me=$(basename `pwd`)
-rev=`svnversion`
-(cd .. ; zip -r $me-r$rev-src.zip $me)
 
 # Build the Whole project (Java)
-ant debug
-
-# Make apk archive
-cp bin/SettingsActivity-debug.apk ../PinballButtons-r$rev.apk
-(cd ..; zip $me-r$rev-apk.zip PinballButtons-r$rev.apk)
+ant clean debug
+cp bin/SettingsActivity-debug.apk PinballButtons-$rev.apk
 
 # Install into target
 ant installd
