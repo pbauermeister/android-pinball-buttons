@@ -1,5 +1,6 @@
 package net.homelinux.ten.pinballbuttons;
 
+import net.homelinux.ten.pinballbuttons.util.Util;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -24,6 +25,7 @@ public class TheService extends Service {
 	 * @param context
 	 */
 	public static synchronized void restartOrKillService(Context context) {
+		Util.cancelToasts();
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
 		if (prefs.getBoolean(SettingsFragment.KEY_ENABLED, true)) {

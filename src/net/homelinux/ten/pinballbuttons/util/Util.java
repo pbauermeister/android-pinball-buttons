@@ -1,5 +1,7 @@
 package net.homelinux.ten.pinballbuttons.util;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
@@ -20,10 +22,20 @@ public class Util {
 		}
 	}
 
+	private static ArrayList<Toast> toasts = new ArrayList<Toast>();
+
 	public static void toast(Context context, String text) {
 		int duration = Toast.LENGTH_LONG;
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
+		toasts.add(toast);
+	}
+
+	public static synchronized void cancelToasts() {
+		for (Toast t : toasts) {
+			t.cancel();
+		}
+		toasts.clear();
 	}
 
 	public static void beep() {
