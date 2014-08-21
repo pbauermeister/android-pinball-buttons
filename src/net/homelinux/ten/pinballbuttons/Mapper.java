@@ -45,7 +45,7 @@ public class Mapper {
 		Logs.d(TAG, "*** Starting mapper");
 		ShellCommand cmd = new ShellCommand();
 		boolean ret = cmd.execute("su", "-c", bin_full_path);
-		//TODO: check if bin_full_path exists	
+		// TODO: check if bin_full_path exists
 
 		int fin = cmd.finish();
 		Logs.d(TAG, String.format("%s --> %s, finish --> %d ", cmd.toString(),
@@ -103,7 +103,7 @@ public class Mapper {
 
 		/* Check if exists */
 		File file = new File(bin_full_path);
-		if (file.exists()) {
+		if (file.exists() && false) {
 			Logs.d(TAG, "File exists");
 		} else {
 			Logs.d(TAG, "Copying file");

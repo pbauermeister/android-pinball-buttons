@@ -2,6 +2,7 @@ package net.homelinux.ten.pinballbuttons;
 
 import net.homelinux.ten.pinballbuttons.util.Util;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -34,6 +35,10 @@ public class TheService extends Service {
 		} else {
 			Intent serviceIntent = new Intent(context, TheService.class);
 			context.stopService(serviceIntent);
+			
+			NotificationManager notifyManager = (NotificationManager) context
+					.getSystemService(Context.NOTIFICATION_SERVICE);
+			notifyManager.cancel(NOTIFICATION_ID);
 		}
 	}
 
