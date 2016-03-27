@@ -1,7 +1,7 @@
 Android app for the mini pinball cabinet project
 ================================================
 
-(C) 2013 by Pascal Bauermeister.
+(C) 2013-2016 by Pascal Bauermeister.
 Released under the GNU General Public License (GPL) version 3.
 No warranties of any kind are given.
 
@@ -25,5 +25,16 @@ Documentation
 
 * UML class diagram: see architecture_classes.graphml (open with yEd).
 
-* Run build_all.sh to build the project. It needs JDK, the Android
-  SDK, and the arm-linux-gnueabi-gcc cross compiler.
+
+Building
+--------
+
+* An old (unmaintained) version under Eclipse is in the folder old-with-eclipse/.
+
+* It now builds under Android Studio.
+  - You must have the NDK installed in addition to the Android SDK.
+  - first, run: ./build-native-executable.sh
+  - then, build: ./gradlew assemble
+  - or build+run from Android Studio.
+
+* Currently, the native code supports only ARM-based targets.
