@@ -14,7 +14,7 @@ This is the Android software used for the mini pinball cabinet.
 ![Pinball cabinet](https://content.instructables.com/FQB/AM1A/HFSHUX0K/FQBAM1AHFSHUX0K.jpg?auto=webp&frame=1&width=512&height=512&fit=bounds&md=85bc3572c570912c584acf67b0cd3c17 "Pinball cabinet")
 
 It essentially does this:
- * Listens to keyboard events, and forward them as touchscreen events. This part is written in C, and expects the device to be rooted.
+ * Listens to keyboard events, and forward them as touchscreen events. This part is written in C, and expects the device to **be rooted**.
  * Provides an app caring for the configuration (selection of device drivers). This part is written in Java.
 
 Documentation
@@ -25,6 +25,7 @@ Documentation
 
 * UML class diagram: see architecture_classes.graphml (open with yEd).
 
+  ![Class diagram](https://content.instructables.com/F7N/55VS/HFSH5560/F7N55VSHFSH5560.png?auto=webp&frame=1&width=800&height=800&fit=bounds&md=285048f50656395df82e17408e55fcde "Class diagram")
 
 Building
 --------
